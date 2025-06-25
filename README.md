@@ -15,3 +15,21 @@ To install the project dependencies, run:
 ```bash
 pip install -r requirements.txt
 ```
+## Repository Structure : 
+
+```
+├── src
+│   └── data/  # loads data and create data loaders  
+│   └── features/ # extracts geometric, color, and texture features from mask and save them
+│   └── segmentation/ # creates masks for images from three datasets. Compute IoU with the test ground truth.
+│   └── interpretation/ # computes SHAP values from model for three datasets.
+│   └── extract_mask_and_features.py # for all images creates masks, extract features and store them.
+│   └── train_eval.py # Performs multimodal classification
+│   └── compute_plot_shap.py # Computes shap values of multimodal network
+│   └── config.py # Config file
+├── data/ # Folder for the data
+├── models/ # folder for the models
+├── out/ # folder for the result reports  
+└── README.md                 
+
+```

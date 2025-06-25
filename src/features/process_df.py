@@ -58,3 +58,11 @@ def normalize_df(df1):
     columns_tabular = [i for i in df1.columns if i not in ['cell', 'label', 'dataset', 'Unnamed: 0', 'is_valid', 'index']]
     df1.loc[:,columns_tabular] = normalized_df.loc[:,columns_tabular]
     return df1
+
+def process_df(df):
+    df = split_columns(df)
+    df = split_train_valid(df)
+    df = remove_nan(df)
+    df =  normalize_df(df)
+    return df
+    

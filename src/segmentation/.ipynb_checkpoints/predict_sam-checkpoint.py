@@ -92,6 +92,8 @@ def predict(img_path_tot,bbox_name):
             
             cell_box = line.strip().split()
             cell_box = [int(i) for i in cell_box]
+            label = img_path_tot.split('-')[1]
+            
         elif bbox_name[:-3] == 'xml':
             # Parse XML
             tree = ET.parse(bbox_name)
@@ -99,13 +101,14 @@ def predict(img_path_tot,bbox_name):
             cell_box = []
     
             for obj in root.findall('object'):
-                name = obj.find('name').text.split(' ')[0]
+                label = obj.find('name').text.split(' ')[0]
                 bndbox = obj.find('bndbox')
                 xmin = int(bndbox.find('xmin').text)
                 ymin = int(bndbox.find('ymin').text)
                 xmax = int(bndbox.find('xmax').text)
                 ymax = int(bndbox.find('ymax').text)
                 cell_box.append([xmin, ymin, xmax, ymax])
+                
     
     new_cell_box = np.array(cell_box)
     predictor.set_image(image) #array
@@ -125,5 +128,5 @@ def predict(img_path_tot,bbox_name):
     mask[mask_cyto == 0] = 0
     mask[mask_cyto == 1] = 1
     mask[mask_nucleus == 255] = 2
-    return mask
+    return mask, label
 

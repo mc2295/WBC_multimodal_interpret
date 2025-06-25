@@ -27,7 +27,7 @@ def compute_iou(images_test_path, model_path, save_overlay = False):
                 out = predict_unet(image_path_tot, model_path)
             if source in {'tianjin'}: 
                 bbox_name = images_path_test + 'bounding_boxes/' + img_path[:-4] + '.txt'
-                out = predict_sam(img_path_tot,bbox_name)
+                out, label = predict_sam(img_path_tot,bbox_name)
     
             if save_overlay:
                 fig, ax = plt.subplots()

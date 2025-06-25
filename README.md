@@ -8,6 +8,9 @@ White blood cell classification plays a key role in the diagnosis of hematologic
 ## Architecture
 ![alt text](architecture.png "Architecture of the Multimodal network. The network comprises two branches, one for each modality. They are fused through concatenation before the final dense layer, which gives the class prediction. Feature branch can be used to compute SHAP values")
 
+## Interpretability with SHAP values computation
+![alt text](subnetwork.png "Subnetwork used for SHAP value computation. Image embeddings are output by EfficientNet and concatenated to morphological features. SHAP values are only computed with respect to morphological features.")
+
 ## Requirements
 
 To install the project dependencies, run:
